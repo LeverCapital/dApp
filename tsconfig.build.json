@@ -1,0 +1,45 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "module": "esnext",
+    "rootDir": "src",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "paths": {
+      "@theme": ["src/theme"],
+      "@components/*": ["src/components"],
+      "@hooks": ["src/hooks"],
+      "@store": ["src/store"],
+      "@graphql": ["src/graphql"],
+      "@utilities": ["src/utilities"],
+      "@routes": ["src/routes"],
+      "@factories": ["src/factories"],
+    },
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "./build",
+    "noEmit": true,
+    "isolatedModules": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "src/graphql/generated.ts",
+    "**/__tests__/*.spec.ts",
+    "**/*.stories.tsx"
+  ]
+}
