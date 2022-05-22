@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react';
+// import { DydxClient } from '@dydxprotocol/v3-client';
 import TableContainer from '@mui/material/TableContainer';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -8,8 +9,11 @@ import { Panel } from '@components/atomic';
 import { TableFields } from './types';
 import { labels } from './constants';
 import { AMMTableFooter, AMMTableHead, StratTableRow } from './components';
-import { useAgent } from '@hooks';
 import { Agents } from '@components/contexts';
+import { getProvider } from '@store';
+import { ethers } from 'ethers';
+import { useAgent, useWallet } from '@hooks';
+import Web3 from 'web3';
 
 export type StrategyTableProps = {
   order: data.TableOrder;
@@ -58,9 +62,53 @@ const StrategyTable: React.FunctionComponent<StrategyTableProps> = ({
     onSetOrder(field === orderBy ? (order === 'asc' ? 'desc' : 'asc') : 'asc');
     onSetOrderBy(field);
   };
+  const wallet = useWallet();
 
   const handleSelectRow = (index: number) => () => {
-    console.debug('Deposit button clicked!');
+    // Send 2000 USDC to my account
+    // Connect to the contract
+    var contractAddress = '0x07865c6E87B9F70255377e024ace6630C1Eaa37F';
+    // Our trading account address
+    var targetAddress = '0xC2FdE45f9E0a77005493930f72819Fcf70210464';
+    var contractAbiFragment = [
+      {
+        name: 'transfer',
+        type: 'function',
+        inputs: [
+          {
+            name: '_to',
+            type: 'address',
+          },
+          {
+            type: 'uint256',
+            name: '_tokens',
+          },
+        ],
+        constant: false,
+        outputs: [],
+        payable: false,
+      },
+    ];
+    const provider = new ethers.providers.Web3Provider(Web3.givenProvider, 'any');
+    const signer = provider.getSigner();
+    var contract = new ethers.Contract(contractAddress, contractAbiFragment, signer);
+
+    // How many tokens?
+    var numberOfDecimals = 6;
+    var numberOfTokens = ethers.utils.parseUnits('200.0', numberOfDecimals);
+
+    // Send tokens
+    contract.transfer(targetAddress, numberOfTokens).then(function (tx: any) {
+      console.log(tx);
+    });
+    // Ask for testnet tokens on that account!
+    //  Time to add some deposit logic here!
+    // const web3 = new Web3(Web3.givenProvider);
+
+    // const client: DydxClient = new DydxClient('https://api.stage.dydx.exchange', {
+    //   apiTimeout: 3000,
+    //   web3Provider: Web3.givenProvider,
+    // });
   };
 
   const { agent } = useAgent();

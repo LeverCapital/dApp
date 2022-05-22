@@ -14,6 +14,7 @@ import {
   Settle,
   Swap,
   Voltz,
+  WagmiOwl,
   WalletConnect,
 } from './icons';
 
@@ -30,6 +31,7 @@ export type Icons =
   | 'tx-settle'
   | 'tx-swap'
   | 'voltz'
+  | 'wagmi'
   | 'walletConnect'
   | 'warning-circle';
 
@@ -39,8 +41,9 @@ export const iconMap: Record<Icons, ElementType> = {
   ethereum: Ethereum as ElementType,
   'information-circle': InterfaceAlertInformationCircle as ElementType,
   metamask: Metamask as ElementType,
+  wagmi: WagmiOwl as ElementType,
   voltz: Voltz as ElementType,
-  'walletConnect': WalletConnect as ElementType,
+  walletConnect: WalletConnect as ElementType,
   'warning-circle': InterfaceAlertWarningCircle as ElementType,
   'tx-burn': Burn as ElementType,
   'tx-liquidation': Liquidation as ElementType,
