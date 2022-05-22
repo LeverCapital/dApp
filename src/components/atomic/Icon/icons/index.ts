@@ -5,7 +5,6 @@ export { ReactComponent as InterfaceAlertInformationCircle } from './interface a
 export { ReactComponent as InterfaceAlertWarningCircle } from './interface alert warning circle.svg';
 export { ReactComponent as Metamask } from './metamask.svg';
 export { ReactComponent as Voltz } from './voltz.svg';
-export { ReactComponent as WagmiOwl } from './wagmi-owl.svg';
 export { ReactComponent as WalletConnect } from './walletconnect.svg';
 
 export { ReactComponent as Burn } from './transactions/burn.svg';

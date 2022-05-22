@@ -2,8 +2,8 @@ import { TableFields } from './types';
 
 export const TableLabels: Record<TableFields, string> = {
   strategy: 'Strategy',
-  dailyROI: 'Est Daily ROI',
-  weeklyROI: 'Est Weekly ROI',
+  dailyROI: 'Last 24hrs ROI',
+  weeklyROI: 'Last week ROI',
 };
 
 export const labels: [TableFields, string][] = [
