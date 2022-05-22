@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { useMemo } from 'react';
 // import { DydxClient } from '@dydxprotocol/v3-client';
 import TableContainer from '@mui/material/TableContainer';
@@ -10,7 +11,6 @@ import { TableFields } from './types';
 import { labels } from './constants';
 import { AMMTableFooter, AMMTableHead, StratTableRow } from './components';
 import { Agents } from '@components/contexts';
-import { getProvider } from '@store';
 import { ethers } from 'ethers';
 import { useAgent, useWallet } from '@hooks';
 import Web3 from 'web3';
@@ -67,10 +67,10 @@ const StrategyTable: React.FunctionComponent<StrategyTableProps> = ({
   const handleSelectRow = (index: number) => () => {
     // Send 2000 USDC to my account
     // Connect to the contract
-    var contractAddress = '0x07865c6E87B9F70255377e024ace6630C1Eaa37F';
+    const contractAddress = '0x07865c6E87B9F70255377e024ace6630C1Eaa37F';
     // Our trading account address
-    var targetAddress = '0xC2FdE45f9E0a77005493930f72819Fcf70210464';
-    var contractAbiFragment = [
+    const targetAddress = '0xC2FdE45f9E0a77005493930f72819Fcf70210464';
+    const contractAbiFragment = [
       {
         name: 'transfer',
         type: 'function',
@@ -89,17 +89,20 @@ const StrategyTable: React.FunctionComponent<StrategyTableProps> = ({
         payable: false,
       },
     ];
-    const provider = new ethers.providers.Web3Provider(Web3.givenProvider, 'any');
+    const provider: ethers.providers.Web3Provider = new ethers.providers.Web3Provider(
+      Web3.givenProvider,
+      'any',
+    );
     const signer = provider.getSigner();
-    var contract = new ethers.Contract(contractAddress, contractAbiFragment, signer);
+    const contract = new ethers.Contract(contractAddress, contractAbiFragment, signer);
 
     // How many tokens?
-    var numberOfDecimals = 6;
-    var numberOfTokens = ethers.utils.parseUnits('200.0', numberOfDecimals);
+    const numberOfDecimals = 6;
+    const numberOfTokens = ethers.utils.parseUnits('200.0', numberOfDecimals);
 
     // Send tokens
     contract.transfer(targetAddress, numberOfTokens).then(function (tx: any) {
-      console.log(tx);
+      console.debug(tx);
     });
     // Ask for testnet tokens on that account!
     //  Time to add some deposit logic here!
