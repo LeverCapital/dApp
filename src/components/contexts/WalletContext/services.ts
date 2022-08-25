@@ -9,6 +9,7 @@ import { BigNumber, ethers } from 'ethers';
  */
 export const checkForCorrectNetwork = async (provider: ethers.providers.JsonRpcProvider) => {
   const network = await provider.getNetwork();
+  // TODO: Maybe change this to Chain ID rather than name
   if (network.name !== process.env.REACT_APP_REQUIRED_ETHEREUM_NETWORK) {
     throw new Error('Wrong network');
   }

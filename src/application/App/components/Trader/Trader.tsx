@@ -77,8 +77,8 @@ const Trader: React.FunctionComponent = () => {
         <Box sx={{ width: '100%', maxWidth: '768px', margin: '0 auto' }}>
           <Box sx={{ marginBottom: (theme) => theme.spacing(12) }}>
             <PageTitleDesc
-              title="Leverage the power of automated trading"
-              desc="Choose from our handcrafted strategies and let our bots earn while you sleep"
+              title="Invest in the best traders out there"
+              desc="Choose from top human/bot managers and watch them earn alpha for you"
             />
           </Box>
           <ConnectedStratTable />

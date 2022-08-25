@@ -39,13 +39,15 @@ const LiquidityProvider: React.FunctionComponent = () => {
     }
 
     if (formActive && !isNull(effectiveAmm)) {
-      return 'form'
+      return 'form';
     }
   };
 
   const renderMode = getRenderMode();
-  const isEditingMargin = formActive && !isNull(effectiveAmm) && Boolean(position) && editMode === 'margin';
-  const isEditingLiquidity = formActive && !isNull(effectiveAmm) && Boolean(position) && editMode === 'liquidity';
+  const isEditingMargin =
+    formActive && !isNull(effectiveAmm) && Boolean(position) && editMode === 'margin';
+  const isEditingLiquidity =
+    formActive && !isNull(effectiveAmm) && Boolean(position) && editMode === 'liquidity';
 
   useEffect(() => {
     setFormActive(false);
@@ -81,18 +83,15 @@ const LiquidityProvider: React.FunctionComponent = () => {
       {renderMode === 'pools' && (
         <Box sx={{ width: '100%', maxWidth: '870px', margin: '0 auto' }}>
           <Box sx={{ marginBottom: (theme) => theme.spacing(12) }}>
-            <PageTitleDesc 
-              title='Provide Liquidity' 
-              desc='Choose a pool and provide liquidity within your chosen ranges.' 
-            />
+            <PageTitleDesc title="Coming soon!" desc="" />
           </Box>
           <ConnectedAMMTable onSelectItem={handleSelectAmm} />
         </Box>
       )}
 
       {renderMode === 'portfolio' && (
-        <Panel variant='dark' sx={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
-          <ConnectedPositionTable 
+        <Panel variant="dark" sx={{ width: '100%', maxWidth: '1000px', margin: '0 auto' }}>
+          <ConnectedPositionTable
             amm={effectiveAmm}
             onSelectItem={handleSelectPosition}
             agent={Agents.LIQUIDITY_PROVIDER}
@@ -102,13 +101,13 @@ const LiquidityProvider: React.FunctionComponent = () => {
 
       {renderMode === 'form' && (
         <Box sx={{ height: '100%', display: 'flex', justifyContent: 'center' }}>
-          <ConnectedMintBurnForm 
-            amm={effectiveAmm} 
+          <ConnectedMintBurnForm
+            amm={effectiveAmm}
             isEditingMargin={isEditingMargin}
             isEditingLiquidity={isEditingLiquidity}
-            onReset={handleReset} 
-            position={position} 
-          /> 
+            onReset={handleReset}
+            position={position}
+          />
         </Box>
       )}
     </Page>

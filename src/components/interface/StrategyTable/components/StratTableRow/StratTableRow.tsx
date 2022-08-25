@@ -65,11 +65,21 @@ const StratTableRow: React.FunctionComponent<StratTableRowProps> = ({ index, onS
     // todo: <TableRow key={index} sx={{...anotherObject,  ...typeStyleOverrides() }}>
     <TableRow key={index} sx={{ ...typeStyleOverrides() }}>
       {labels.map(([field, label]) => {
-        if (field === 'strategy') {
+        if (field === 'vault') {
           return (
             <TableCell>
               <Typography variant="body2" label={label} agentStyling sx={{ fontSize: 18 }}>
-                Zeno
+                Copy Catto
+              </Typography>
+            </TableCell>
+          );
+        }
+
+        if (field === 'manager') {
+          return (
+            <TableCell>
+              <Typography variant="body2" label={label} agentStyling sx={{ fontSize: 18 }}>
+                Lever Capital
               </Typography>
             </TableCell>
           );

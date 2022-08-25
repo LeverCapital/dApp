@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 
-export type TableFields = 'strategy' | 'dailyROI' | 'weeklyROI';
+export type TableFields = 'vault' | 'manager' | 'dailyROI' | 'weeklyROI';
 
 export type TableDatum = {
   id: string;

@@ -2,6 +2,6 @@ export const routes = {
   LP_FARM: 'lp-positions',
   POOLS: 'lp-pools',
   PORTFOLIO: 'portfolio',
-  SWAP: 'trader-pools',
-  TRM_POST: 'trm-post'
+  SWAP: 'perp-vaults',
+  TRM_POST: 'trm-post',
 };

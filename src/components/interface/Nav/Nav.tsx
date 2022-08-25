@@ -127,7 +127,7 @@ const Nav: React.FunctionComponent = () => {
         link={`/${routes.SWAP}`}
         className={open ? 'open' : undefined}
       >
-        WAGMI CAPITAL
+        LEVER CAPITAL
       </Button>
 
       {/* todo: below logic can be simplified by wrapping duplicate code below into a reusable component */}
@@ -135,10 +135,10 @@ const Nav: React.FunctionComponent = () => {
         aria-describedby={id}
         sx={buttonSx}
         variant="text"
-        onClick={handleClick}
+        link={`/${routes.SWAP}`}
         className={open ? 'open' : undefined}
       >
-        STRATEGIES
+        Perpetual Vaults
       </Button>
       <Popover
         id={id}
@@ -171,37 +171,12 @@ const Nav: React.FunctionComponent = () => {
         aria-describedby={id2}
         sx={buttonSx}
         variant="text"
-        onClick={handleClick2}
+        // onClick={handleClick2}
         className={open2 ? 'open' : undefined}
+        link={`/${routes.POOLS}`}
       >
         PORTFOLIO
       </Button>
-      <Popover
-        id={id2}
-        open={open2}
-        anchorEl={anchorEl2}
-        onClose={handleClose2}
-        anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
-        }}
-        sx={{ ...popoverOverride }}
-        elevation={0}
-      >
-        <ButtonGroup
-          orientation="vertical"
-          sx={buttonGroupSx}
-          aria-label="vertical outlined button group"
-        >
-          <Button variant="text" sx={subMenuButtonSx} link={`/${routes.POOLS}`}>
-            LP POOLS
-          </Button>
-
-          <Button variant="text" sx={subMenuButtonSx} link={`/${routes.LP_FARM}`}>
-            POSITIONS
-          </Button>
-        </ButtonGroup>
-      </Popover>
     </Box>
   );
 };
